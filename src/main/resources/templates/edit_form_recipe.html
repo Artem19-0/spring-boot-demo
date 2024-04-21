@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/static/style.css" th:href="@{/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+
+
+<div align="center" class="center">
+  <h1 th:text="'Edit ' + ${recipe.name}"></h1>
+
+  <form action="#" th:action="@{/recipe/edit}" method="post" th:object="${recipe}">
+
+    <input type="hidden" name="id" th:value="${recipe.id}">
+
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" /><br/>
+
+    <label>Cooking Method:</label>
+    <input type="text" th:field="*{cookingMethod}" /><br/>
+
+    <label>Cooking Time:</label>
+    <input type="number" th:field="*{cookingTime}" /><br/>
+
+    <div class="form-group mb-3">
+      <label class="form-label" for="category" >Category</label>
+      <select id="category" name="category" multiple >
+        <option value="Салат">Салат</option>
+        <option value="Ужин">Ужин</option>
+        <option value="Завтрак">Завтрак</option>
+        <option value="Обед">Обед</option>
+        <option value="Перекус">Перекус</option>
+        <option value="Горячее блюдо">Горячее блюдо</option>
+      </select><br><br>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="products">Products</label>
+      <select id="products" name="products" multiple >
+        <option th:each="product : ${products}" th:text="${product.name}" th:value="${product.id}"></option>
+      </select><br><br>
+    </div>
+
+    <button type="submit">Edit</button>
+  </form>
+
+</div>
+
+
+</body>
+</html>
+

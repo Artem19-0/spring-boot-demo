@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+    <link href="/static/table.css" th:href="@{/table.css}" rel="stylesheet" />
+
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Married</th>
+        <th>Birthday</th>
+        <th>Profession</th>
+    </tr>
+
+    <tr th:each="client : ${clients}">
+        <td th:text="*{client.name}">...</td>
+        <td th:text="*{client.email}">...</td>
+        <td th:text="*{client.gender}">...</td>
+        <td th:text="*{client.married}">...</td>
+        <td th:text="*{client.birthday}">...</td>
+        <td th:text="*{client.profession}">...</td>
+
+        <td>
+            <a th:href="@{'/clients/delete/' + ${client.email}}">Delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/clients/edit/' + ${client.email}}">Edit</a>
+        </td>
+    </tr>
+
+</table>  <br/>
+
+
+
+<form th:action="@{/weather/show_weather}" method="get">
+    <label for="daySelect">Select a day (1-7):</label>
+    <select id="daySelect" name="to">
+        <option th:each="to : ${#numbers.sequence(1,7)}" th:value="${to}" th:text="${to}"></option>
+    </select><br><br>
+
+    <label for="citySelect">Choose the weather of a city:</label>
+    <select id="citySelect" name="city">
+        <option value="Gomel,BLR">Gomel,BLR</option>
+        <option value="Minsk,BLR">Minsk,BLR</option>
+        <option value="Tokyo">Tokyo</option>
+        <option value="New York,USA">New York,USA</option>
+        <option value="Brest,BLR">Brest,BLR</option>
+        <option value="Grodno,BLR">Grodno,BLR</option>
+    </select>
+    <br><br>
+    <button type="submit">Send</button>
+</form>
+
+
+<img th:src="@{../static/recipe/r01.jpg}" alt="Пример картинки" width="400" height="300" style="float:right"/>
+
+</body>
+</html>

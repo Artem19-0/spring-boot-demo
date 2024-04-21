@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/style.css" th:href="@{/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+
+
+<div align="center" class="center">
+    <h1 th:text="'Edit ' + ${user.nickname}"></h1>
+
+    <form action="#" th:action="@{/food/edit}" method="post" th:object="${user}">
+
+        <input type="hidden" name="id" th:value="${user.id}">
+
+        <label>Nickname:</label>
+        <input type="text" th:field="*{nickname}" /><br/>
+
+        <label>E-mail:</label>
+        <input type="email" th:field="*{email}" /><br/>
+
+        <label>Password:</label>
+        <input type="text" th:field="*{password}" /><br/>
+
+        <label>Country:</label>
+        <input type="text" th:field="*{country}" />
+
+        <label>Password:</label>
+        <input type="text" th:field="*{role.role}" /><br/>
+
+        <button type="submit">Edit</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+
+p {
+    color: black;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 200px;
+    margin: 5px;
+    text-align: left;
+}
+input[type=text], input[type=password], select {
+    display: inline-block;
+    width: 200px;
+}
+input[type=radio] {
+    margin-left: 45px;
+}
+input[type=checkbox] {
+    margin-right: 190px;
+}
+button {
+    padding: 5px;
+    margin: 10px;
+}
+
+.button {
+    text-decoration: none;
+    color: #0f7afc;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(15, 122, 252, 0.2);
+}
+
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.btn-danger {
+    text-decoration: none;
+    color: #d30d0d;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(182, 17, 17, 0.2);
+}
+

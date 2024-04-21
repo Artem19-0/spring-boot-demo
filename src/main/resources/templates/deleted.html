@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p class="text-center" th:text="'Recipe deleted successfully' + ${recipe.name}"></p><br>
+
+<a th:href="@{/food/home}">Come back to main page</a>
+</body>
+</html>

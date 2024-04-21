@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link href="/static/table.css" th:href="@{/table.css}" rel="stylesheet" />
+    <link href="/static/style.css" th:href="@{/style.css}" rel="stylesheet" />
+
+
+</head>
+<body>
+
+<a th:href="@{/food/home}">Come back to main page</a> <br><br><br>
+
+<div class="center"><h1>All Recipes</h1></div>
+
+<!--<form action="#" th:action="@{/recipe/search_name}" method="post" th:object="${recipe}">-->
+<!--        <label >Search by name: </label>-->
+<!--        <input type="text" name="name" th:field="*{name}">-->
+<!--        <input type="submit" value="Search">-->
+<!--</form>-->
+
+<form method="get" th:action="@{/recipe/search_name}">
+    <input type="search" name="name" />
+    <input type="submit" value="Search" />
+</form>
+
+<table class="table">
+    <tr>
+        <th>Picture</th>
+        <th>Name</th>
+        <th>Cooking Method</th>
+        <th>Products</th>
+        <th>Cooking Time</th>
+        <th>Created By</th>
+    </tr>
+
+    <tr th:each="recipe : ${recipes}">
+        <td><img th:src="'/recipe/' + ${recipe.image} + '.jpg'" alt="Image of dish" width="220" height="200"> </td>
+        <td th:text="${recipe.name}">...</td>
+        <td th:text="${recipe.cookingMethod}">...</td>
+        <td>
+            <ul style="list-style-type:disc">
+                <li th:each="product : ${recipe.getProducts()}" >
+                    <a th:text="${product.name}" th:href="@{'/recipe/product/' + ${product.id}}">...</a>
+                </li>
+            </ul>
+        </td>
+        <td th:text="${recipe.cookingTime + ' min'}">...</td>
+        <td th:text="${recipe.user.nickname}">...</td>
+        <td> <a th:href="@{'/recipe/edit/' + ${recipe.id}}" class="button">Edit</a> </td>
+        <td> <a th:href="@{'/recipe/delete/' + ${recipe.id}}" class="btn-danger">Delete </a> </td>
+    </tr>
+
+</table>
+
+</form>
+
+
+</body>
+</html>
